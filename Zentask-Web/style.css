@@ -1,0 +1,347 @@
+/* Tema renkleri */
+body.dark {
+  --primary: #3797e1;
+  --bg: #1f1f2e;
+  --bg-light: #2b2b3c;
+  --text: #ffffff;
+  --text-light: #aaaaaa;
+  --card: #2c2c3d;
+  --border: #3c3c4d;
+  --green: #4ade80;
+  --blue: #60a5fa;
+  --in-progress: #f59e0b;
+  --done: #22c55e;
+  --overdue: #9b1111;
+}
+
+body.light {
+  --primary: #3797e1;
+  --bg: #f4f6f9;
+  --bg-light: #ffffff;
+  --text: #1e1e2e;
+  --text-light: #555;
+  --card: #ffffff;
+  --border: #ccc;
+  --green: #16a34a;
+  --blue: #2563eb;
+  --in-progress: #fb923c;
+  --done: #16a34a;
+  --overdue: #9b1111;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: var(--bg-light);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-img {
+  width: 140px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--bg-light);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.topbar input,
+.topbar .btn {
+  margin-left: 0.5rem;
+}
+
+/* Menü butonu ve dropdown */
+.menu-button {
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  margin-right: 10px;
+}
+
+.dropdown {
+  display: flex;
+  background-color: var(--card);
+  flex-direction: column;
+  z-index: 10;
+}
+
+.dropdown button {
+  all: unset;
+  padding: 10px 15px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Giriş kutusu */
+#page-title {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--card);
+  color: var(--text);
+  width: 250px;
+}
+
+/* Butonlar */
+.btn {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Öncelikli işler */
+#priority-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: var(--card);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  width: 200px;
+  display: none;
+  box-shadow: 0 0 9px black;
+  z-index: 100;
+}
+
+#priority-container hr,
+#priority-container h3 {
+  color: var(--primary);
+  margin: 0;
+  text-align: center;
+}
+
+#priority-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+#priority-list li {
+  background-color: #ffeb3b;
+  color: #000;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* Görev panosu */
+.task-board {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.column {
+  flex: 1;
+  background-color: var(--bg-light);
+  border-radius: 10px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.column h2 {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.column > div {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Kart */
+.task-card {
+  background-color: var(--card);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, border 0.2s ease;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.task-card.done:hover {
+  border-color: var(--done);
+}
+
+.task-card.overdue:hover {
+  border-color: var(--overdue);
+}
+
+.task-card.in-progress:hover {
+  border-color: var(--in-progress);
+}
+
+.task-card:hover {
+  border-color: var(--primary);
+  transform: scale(1.02);
+  z-index: 99;
+}
+
+.task-card.in-progress {
+  background-color: var(--card);
+}
+
+.task-card.overdue {
+  background-color: var(--card);
+  box-shadow: 0 0 5px #9b1111;
+}
+
+.task-card.done {
+  background-color: var(--card);
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-desc {
+  margin: 5px 0;
+  overflow-wrap: break-word;
+}
+
+.task-date {
+  font-size: 0.9em;
+  color: var(--text-light);
+}
+
+.task-card input[type='checkbox'] {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Kart butonları */
+.task-card button {
+  display: none;
+}
+
+.task-card:hover button {
+  display: inline-block;
+}
+
+.delete-task {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-task:hover {
+  background-color: #d32f2f;
+}
+
+.in-progress-btn,
+.edit-task-btn {
+  margin-top: 10px;
+  background-color: #ffa726;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.in-progress-btn:hover,
+.edit-task-btn:hover {
+  background-color: #fb8c00;
+}
+
+/* Form alanı */
+#task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#task-form input,
+#task-form textarea,
+#task-form button {
+  padding: 0.5rem;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--card);
+  color: var(--text);
+}
+
+#task-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+#task-form button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#task-form button:hover {
+  background-color: var(--blue);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+

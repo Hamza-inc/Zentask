@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zentask</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="zentask-min.svg" type="image/svg+xml" />
+</head>
+<body class="dark">
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+	  <div>
+      <img src="logo.svg" alt="Logo" class="logo-img" />
+      <nav>
+		<div class="dropdown">
+             <button id="new-page-btn">📋Yeni Sayfa</button>
+             <button id="load-json-btn">📝Aç</button>
+             <button id="save-json-btn">📅Kaydet (.json)</button>
+             <input type="file" id="load-json-input" accept=".json" style="display: none;">
+        </div>
+      </nav>
+	  </div>
+	  <div id="task-form">
+            <input type="text" id="task-title" placeholder="Başlık">
+            <textarea id="task-desc" placeholder="Açıklama"></textarea>
+            <input type="date" id="task-date">
+            <button id="add-task-btn">Görev Ekle</button>
+          </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div class="left">
+          <input type="text" id="page-title" placeholder="Sayfa Adı" />
+        </div>
+        <div class="right">
+          <button id="toggleTheme" class="btn">🌙</button>
+        </div>
+      </header>
+
+      <!-- Priority Tasks -->
+      <section id="priority-container">
+        <h3>Öncelikli İşler</h3>
+        <hr />
+        <ul id="priority-list"></ul>
+      </section>
+
+      <!-- Task Board -->
+      <section class="task-board">
+        <!-- Todo Column -->
+        <div class="column">
+          <h2>🧾 Yapılacaklar</h2>
+          <div id="todo-list"></div>
+        </div>
+		
+		<div class="column">
+          <h2>🖋️ Yapım Aşamasında</h2>
+          <div id="undercon-list"></div>
+        </div>
+
+        <!-- Done Column -->
+        <div class="column">
+          <h2>✅ Tamamlananlar</h2>
+          <div id="done-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.3/purify.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const body = document.body;
+    const toggleBtn = document.getElementById('toggleTheme');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+      body.classList.add('dark');
+      toggleBtn.textContent = '🌙';
+    } else {
+      body.classList.add('light');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (body.classList.contains('dark')) {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        toggleBtn.textContent = '☀️';
+      } else {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        toggleBtn.textContent = '🌙';
+      }
+    });
+  </script>
+</body>
+</html>
