@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,18 +15,18 @@
       <img src="logo.svg" alt="Logo" class="logo-img" />
       <nav>
 		<div class="dropdown">
-             <button id="new-page-btn">📋Yeni Sayfa</button>
-             <button id="load-json-btn">📝Aç</button>
-             <button id="save-json-btn">📅Kaydet (.json)</button>
+             <button id="new-page-btn">📋New Page</button>
+             <button id="load-json-btn">📝Open</button>
+             <button id="save-json-btn">📅Save (.json)</button>
              <input type="file" id="load-json-input" accept=".json" style="display: none;">
         </div>
       </nav>
 	  </div>
 	  <div id="task-form">
-            <input type="text" id="task-title" placeholder="Başlık">
-            <textarea id="task-desc" placeholder="Açıklama"></textarea>
+            <input type="text" id="task-title" placeholder="Title">
+            <textarea id="task-desc" placeholder="Note"></textarea>
             <input type="date" id="task-date">
-            <button id="add-task-btn">Görev Ekle</button>
+            <button id="add-task-btn">Add Task</button>
           </div>
     </aside>
 
@@ -34,7 +34,7 @@
     <main class="main">
       <header class="topbar">
         <div class="left">
-          <input type="text" id="page-title" placeholder="Sayfa Adı" />
+          <input type="text" id="page-title" placeholder="Page Name" />
         </div>
         <div class="right">
           <button id="toggleTheme" class="btn">🌙</button>
@@ -43,7 +43,7 @@
 
       <!-- Priority Tasks -->
       <section id="priority-container">
-        <h3>Öncelikli İşler</h3>
+        <h3>High Priority</h3>
         <hr />
         <ul id="priority-list"></ul>
       </section>
@@ -52,18 +52,18 @@
       <section class="task-board">
         <!-- Todo Column -->
         <div class="column">
-          <h2>🧾 Yapılacaklar</h2>
+          <h2>🧾 Task List</h2>
           <div id="todo-list"></div>
         </div>
 		
 		<div class="column">
-          <h2>🖋️ Yapım Aşamasında</h2>
+          <h2>🖋️ In Progress</h2>
           <div id="undercon-list"></div>
         </div>
 
         <!-- Done Column -->
         <div class="column">
-          <h2>✅ Tamamlananlar</h2>
+          <h2>✅ Done</h2>
           <div id="done-list"></div>
         </div>
       </section>
