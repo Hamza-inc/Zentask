@@ -46,7 +46,7 @@ function renderTasks() {
             const dateElem = document.createElement('div');
             dateElem.className = 'task-date';
             const dateObj = new Date(task.due);
-            dateElem.innerText = 'Bitiş Tarihi: ' + dateObj.toLocaleDateString('tr-TR');
+            dateElem.innerText = 'Last Date: ' + dateObj.toLocaleDateString('tr-TR');
             card.appendChild(dateElem);
 
             const dueDate = new Date(task.due);
@@ -68,7 +68,7 @@ function renderTasks() {
         if (!task.completed) {
             const inProgressBtn = document.createElement('button');
             inProgressBtn.className = 'in-progress-btn task-button';
-            inProgressBtn.innerText = 'Yapım Aşamasında';
+            inProgressBtn.innerText = 'In Progress';
             inProgressBtn.addEventListener('click', () => {
                 task.inProgress = !task.inProgress;
                 renderTasks();
@@ -78,7 +78,7 @@ function renderTasks() {
 		
 		const editBtn = document.createElement('button');
             editBtn.className = 'edit-task-btn task-button';
-            editBtn.innerText = 'Düzenle';
+            editBtn.innerText = 'Edit';
             editBtn.addEventListener('click', () => {
                 const newTitle = prompt('Yeni başlık:', task.title);
                 const newDesc = prompt('Yeni açıklama:', task.desc);
